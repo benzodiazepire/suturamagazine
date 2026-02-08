@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFOGLIA | SUTURA</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- PDF.js Library (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+    <div id="custom-cursor"></div>
+
+    <!-- LOGO HEADER (HOME) -->
+    <a href="index.html" class="header-logo">
+        <img src="assets/logo.png" alt="Home">
+    </a>
+
+    <nav>
+        <a href="chisiamo.html" class="nav-wrapper top-left"><span class="nav-label">I</span><span class="nav-hover-text" data-i18n="nav_manifesto">manifesto</span></a>
+        <a href="archivio.html" class="nav-wrapper top-right"><span class="nav-label">II</span><span class="nav-hover-text" data-i18n="nav_archivio">archivio</span></a>
+        <a href="diagnosi.html" class="nav-wrapper bottom-left"><span class="nav-label">III</span><span class="nav-hover-text" data-i18n="nav_diagnosi">diagnosi</span></a>
+        <a href="sfoglia.html" class="nav-wrapper bottom-right"><span class="nav-label">IV</span><span class="nav-hover-text" data-i18n="nav_sfoglia">sfoglia</span></a>
+    </nav>
+
+    <main class="container">
+        <h2 class="page-title"><span data-i18n="sfoglia_title">IV. sfoglia</span> <span class="page-subtitle" data-i18n="sfoglia_sub">( magazine )</span></h2>
+        
+        <div class="magazine-grid">
+            <!-- VOLUME 01 -->
+            <!-- Cliccando qui si apre il viewer che caricherà assets/vol01.pdf -->
+            <div class="issue-card" data-pdf="assets/vol01.pdf">
+                <div style="text-align: center;">
+                    <h3 style="font-weight: 300; font-style: italic;" data-i18n="sfoglia_vol01_title">VOL. 01</h3>
+                    <p style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6; margin-top: 10px;" data-i18n="home_vol">( inerzia )</p>
+                </div>
+            </div>
+            
+            <!-- Qui potrai aggiungere i futuri volumi copiando il blocco sopra -->
+        </div>
+
+        <!-- VISUALIZZATORE OVERLAY -->
+        <div id="magazine-viewer">
+            <div class="book-wrapper">
+                <div class="book" id="book-container">
+                    <!-- Le pagine verranno generate qui da JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,661 @@
+/* RESET E BASI */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #121212; /* Dark Mode: Nero Carbone */
+    font-family: serif;
+    color: #e0e0e0; /* Colore Pietra/Avorio */
+    overflow-x: hidden; /* Sblocca lo scroll verticale, blocca orizzontale */
+    cursor: none; /* Nasconde il mouse */
+}
+
+/* CURSORE A CROCE */
+#custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference; /* UX: Il cursore inverte il colore su sfondi chiari/scuri */
+    /* Rimosso transform qui, lo gestisce il JS in modo più fluido */
+}
+
+#custom-cursor::before, #custom-cursor::after {
+    content: '';
+    position: absolute;
+    background-color: #e0e0e0;
+}
+
+#custom-cursor::before {
+    top: 0; left: 50%;
+    width: 1px; height: 100%;
+}
+
+#custom-cursor::after {
+    top: 50%; left: 0;
+    width: 100%; height: 1px;
+}
+
+/* PUNTINI AL CLICK */
+.stitch {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* NAVIGAZIONE ANGOLARE */
+.nav-wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    z-index: 5000;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* UX: Movimento fluido */
+}
+
+.nav-wrapper:hover {
+    transform: scale(1.1); /* Leggero ingrandimento organico */
+}
+
+.nav-label {
+    font-size: 1.2rem;
+    opacity: 0.3;
+    transition: 0.3s;
+}
+
+.nav-hover-text {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: 0.3s;
+    margin-top: 5px;
+}
+
+.nav-wrapper:hover .nav-label { opacity: 1; }
+.nav-wrapper:hover .nav-hover-text { opacity: 1; }
+
+.top-left { top: 40px; left: 40px; align-items: flex-start; }
+.top-right { top: 40px; right: 40px; align-items: flex-end; }
+.bottom-left { bottom: 40px; left: 40px; align-items: flex-start; }
+.bottom-right { bottom: 40px; right: 40px; align-items: flex-end; }
+
+/* CONTENITORE CENTRALE PERFETTO */
+.container {
+    width: 100%;
+    min-height: 100vh; /* Permette al contenuto di espandersi */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center;     /* Centra orizzontalmente */
+    text-align: center;
+    padding: 100px 20px; /* Spazio per non finire sotto il menu */
+    animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; /* UX: Entrata elegante */
+    opacity: 0; /* Parte invisibile per l'animazione */
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-wrapper {
+    margin-bottom: 20px;
+}
+
+.main-logo {
+    max-width: 250px;
+    height: auto;
+    display: block;
+}
+
+.hero-text h1 {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+footer {
+    position: fixed; /* O absolute se preferisci che scorra via */
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    opacity: 0.4;
+}
+
+/* STILI PAGINE INTERNE */
+.page-title {
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.page-subtitle {
+    font-size: 0.5em;
+    opacity: 0.5;
+    margin-left: 10px;
+}
+
+/* ESTETICA CLINICA (Dati, date, note) */
+.clinical-data {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+/* SEZIONE CONTATTI (in Diagnosi) */
+.contact-section {
+    margin-top: 60px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 40px;
+    width: 300px;
+}
+
+.contact-link {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-style: italic;
+    font-size: 1rem;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* GRIGLIA MAGAZINE (Sfoglia) */
+.magazine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    width: 80%;
+    max-width: 1000px;
+    justify-items: center;
+}
+
+.issue-card {
+    width: 250px;
+    height: 350px;
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: none; /* Mantiene il cursore custom */
+}
+
+.issue-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 15px 15px 40px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.3);
+}
+
+/* VIEWER MAGAZINE (Overlay) */
+#magazine-viewer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(18, 18, 18, 0.98);
+    z-index: 6000; /* Sopra la nav, sotto il cursore */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+#magazine-viewer.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.viewer-content {
+    max-width: 80%;
+    max-height: 80%;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    cursor: none; /* Clicca per sfogliare */
+    transform-style: preserve-3d; /* Per l'effetto 3D */
+}
+
+/* ANIMAZIONE SFOGLIA (FLIP) */
+@keyframes flip-page {
+    0% { transform: perspective(2000px) rotateY(0deg); opacity: 1; }
+    50% { transform: perspective(2000px) rotateY(-90deg); opacity: 0.5; }
+    100% { transform: perspective(2000px) rotateY(0deg); opacity: 1; }
+}
+
+.viewer-content.flipping {
+    animation: flip-page 0.6s ease-in-out;
+}
+
+/* --- NUOVO ARCHIVIO (BLOG) --- */
+.archive-list {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    z-index: 10; /* Sopra l'immagine preview */
+}
+
+.archive-item {
+    display: block;
+    text-decoration: none;
+    color: #e0e0e0;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    transition: opacity 0.3s;
+    cursor: none;
+}
+
+.archive-item:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Effetto focus: quando vado su uno, gli altri sbiadiscono */
+.archive-list:hover .archive-item:not(:hover) {
+    opacity: 0.3;
+}
+
+/* Immagine fluttuante Archivio */
+#archive-preview {
+    position: fixed;
+    top: 0; left: 0;
+    width: 350px;
+    height: 450px;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 1; /* Sotto il testo */
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: opacity 0.3s ease, transform 0.4s ease-out;
+    filter: grayscale(100%) contrast(1.2); /* Look fotografico raw */
+}
+
+#archive-preview.active {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- NUOVA DIAGNOSI (SUBMISSION) --- */
+.diagnosis-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    width: 80%;
+    max-width: 1200px;
+    text-align: left;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .diagnosis-wrapper { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.diagnosis-col h3 {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.submit-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 50px;
+    border: 1px solid #e0e0e0;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    cursor: none;
+}
+
+.submit-btn:hover {
+    background-color: #e0e0e0;
+    color: #121212;
+}
+
+/* --- MANIFESTO (HOME) --- */
+.manifesto-wrapper {
+    max-width: 700px;
+    padding: 40px 20px;
+    margin-top: 20px;
+    text-align: center;
+    z-index: 10;
+}
+
+.manifesto-title {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* Effetto Spotlight sul testo */
+.manifesto-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    
+    /* Il trucco magico: Gradiente fisso che segue il mouse */
+    background: radial-gradient(
+        circle 250px at var(--light-x, 50%) var(--light-y, 50%), 
+        #e0e0e0 0%, 
+        rgba(224, 224, 224, 0.1) 100%
+    );
+    background-attachment: scroll; /* Si muove con l'elemento, coordinate calcolate in JS */
+    background-clip: text;
+    -webkit-background-clip: text; /* Per Safari/Chrome */
+    color: transparent; /* Rende il testo trasparente per mostrare il gradiente sotto */
+    
+    transition: opacity 0.3s;
+}
+
+/* LOGO HEADER (HOME LINK) */
+.header-logo {
+    position: fixed;
+    top: 40px; /* Allineato con la navigazione angolare */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px; /* Molto più grande come richiesto */
+    z-index: 5000;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.header-logo:hover {
+    opacity: 0.7; /* Semplice fade elegante, niente glitch */
+}
+.header-logo img {
+    width: 100%;
+    display: block;
+}
+
+/* --- LINGUA (IT / EN) --- */
+.lang-switch {
+    position: fixed;
+    top: 40px;
+    right: 130px; /* Spostato a sinistra per non coprire il menu */
+    z-index: 6000;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: none;
+    display: flex;
+    gap: 10px;
+    mix-blend-mode: difference;
+}
+
+.lang-btn {
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.lang-btn.active, .lang-btn:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* --- COOKIE BANNER --- */
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #121212;
+    border-top: 1px solid rgba(224, 224, 224, 0.2);
+    padding: 20px;
+    text-align: center;
+    z-index: 9000;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out;
+}
+
+#cookie-banner.visible {
+    transform: translateY(0);
+}
+
+#accept-cookies {
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    color: #e0e0e0;
+    padding: 5px 15px;
+    margin-left: 20px;
+    cursor: none;
+    font-family: inherit;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    transition: all 0.3s;
+}
+
+#accept-cookies:hover {
+    background: #e0e0e0;
+    color: #121212;
+}
+
+/* --- FLIPBOOK 3D (PDF) --- */
+.book-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px; /* Profondità 3D */
+}
+
+.book {
+    position: relative;
+    width: 400px; /* Larghezza pagina singola */
+    height: 560px; /* Altezza pagina (proporzione A4 circa) */
+    transform-style: preserve-3d;
+}
+
+.sheet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: left center; /* Il perno è a sinistra (la rilegatura) */
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); /* Movimento carta pesante */
+    transform-style: preserve-3d;
+    cursor: none;
+}
+
+.sheet.flipped {
+    transform: rotateY(-180deg);
+}
+
+.page-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Nasconde il retro quando girato */
+    background-color: #f0f0f0;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1); /* Ombra interna carta */
+}
+
+.page-face.front {
+    z-index: 2;
+}
+
+.page-face.back {
+    transform: rotateY(180deg); /* Il retro è già girato */
+    z-index: 1;
+    background-color: #e5e5e5;
+}
+
+.page-face canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* --- RESPONSIVE & MOBILE OPTIMIZATIONS --- */
+
+/* Disabilita cursore custom su touch devices */
+@media (hover: none) and (pointer: coarse) {
+    html, body { cursor: auto; }
+    #custom-cursor { display: none; }
+    .nav-wrapper, .issue-card, .archive-item, .submit-btn, .lang-switch, a { cursor: pointer; }
+}
+
+/* Mobile Layout (Tablet & Phone) */
+@media (max-width: 768px) {
+    
+    /* Navigazione: Bottom Bar */
+    nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #121212;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 8000;
+        padding: 0 10px;
+    }
+
+    .nav-wrapper {
+        position: relative;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        padding: 0;
+    }
+
+    .nav-label {
+        font-size: 1rem;
+        opacity: 1; /* Sempre visibile su mobile */
+    }
+
+    .nav-hover-text {
+        display: none; /* Nasconde il testo descrittivo per pulizia */
+    }
+
+    /* Header Elements */
+    .header-logo {
+        top: 20px;
+        width: 100px;
+    }
+
+    .lang-switch {
+        top: 25px;
+        right: 20px;
+    }
+
+    /* Layout Generale */
+    .container {
+        padding: 100px 20px 80px 20px; /* Spazio per header e nav bar */
+    }
+
+    /* Manifesto: Rimuovi effetto spotlight (illeggibile su mobile) */
+    .manifesto-text {
+        background: none;
+        color: #e0e0e0;
+        -webkit-background-clip: border-box;
+        background-clip: border-box;
+    }
+    
+    .manifesto-title {
+        font-size: 1.2rem;
+    }
+
+    /* Diagnosi: Stack verticale */
+    .diagnosis-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* Flipbook: Scala per schermi piccoli */
+    .book {
+        width: 300px;
+        height: 420px;
+    }
+
+    /* Footer & Cookie */
+    footer {
+        bottom: 70px; /* Sopra la nav bar */
+        font-size: 0.6rem;
+    }
+
+    #cookie-banner {
+        bottom: 60px; /* Sopra la nav bar */
+    }
+
+    /* --- AGGIUNTE REFINING RESPONSIVE --- */
+    
+    /* Home: Logo più proporzionato */
+    .main-logo {
+        max-width: 180px;
+    }
+
+    /* Archivio: Nascondi preview hover e adatta testo */
+    #archive-preview {
+        display: none !important;
+    }
+    
+    .archive-item h3 {
+        font-size: 1.4rem !important; /* Sovrascrive stile inline */
+    }
+
+    /* Diagnosi: Titolo volume più piccolo */
+    .diagnosis-col h1 {
+        font-size: 2.2rem !important;
+    }
+
+    /* Sfoglia: Adatta griglia */
+    .magazine-grid {
+        width: 100%;
+    }
+
+    /* Viewer PDF: Scala il libro per stare nello schermo */
+    .book-wrapper {
+        transform: scale(0.7);
+    }
+}
+
+/* Small Phones */
+@media (max-width: 380px) {
+    .book {
+        transform: scale(0.8);
+    }
+    .header-logo {
+        width: 80px;
+    }
+}

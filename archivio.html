@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCHIVIO | SUTURA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="custom-cursor"></div>
+
+    <!-- LOGO HEADER (HOME) -->
+    <a href="index.html" class="header-logo">
+        <img src="assets/logo.png" alt="Home">
+    </a>
+
+    <nav>
+        <a href="chisiamo.html" class="nav-wrapper top-left"><span class="nav-label">I</span><span class="nav-hover-text" data-i18n="nav_manifesto">manifesto</span></a>
+        <a href="archivio.html" class="nav-wrapper top-right"><span class="nav-label">II</span><span class="nav-hover-text" data-i18n="nav_archivio">archivio</span></a>
+        <a href="diagnosi.html" class="nav-wrapper bottom-left"><span class="nav-label">III</span><span class="nav-hover-text" data-i18n="nav_diagnosi">diagnosi</span></a>
+        <a href="sfoglia.html" class="nav-wrapper bottom-right"><span class="nav-label">IV</span><span class="nav-hover-text" data-i18n="nav_sfoglia">sfoglia</span></a>
+    </nav>
+
+    <main class="container">
+        <h2 class="page-title"><span data-i18n="archive_title">II. archivio</span> <span class="page-subtitle" data-i18n="archive_sub">( blog )</span></h2>
+        
+        <!-- Immagine che appare al passaggio del mouse -->
+        <img id="archive-preview" src="" alt="Preview">
+
+        <div class="archive-list">
+            <!-- ARTICOLO 1 -->
+            <a href="#" class="archive-item" data-image="https://via.placeholder.com/400x500/333/fff?text=IMG+VUOTO">
+                <span class="clinical-data" style="opacity: 0.5; display: block; margin-bottom: 5px;" data-i18n="archive_item1_date">[ 05.02.2026 ] — SAGGIO VISIVO</span>
+                <h3 style="font-size: 2rem; font-weight: 300; font-style: italic; margin: 0;" data-i18n="archive_item1_title">il peso del vuoto</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;" data-i18n="archive_item1_desc">Un'indagine sulla persistenza degli oggetti dimenticati negli spazi urbani.</p>
+            </a>
+
+            <!-- ARTICOLO 2 -->
+            <a href="#" class="archive-item" data-image="https://via.placeholder.com/400x500/555/fff?text=IMG+POLVERE">
+                <span class="clinical-data" style="opacity: 0.5; display: block; margin-bottom: 5px;" data-i18n="archive_item2_date">[ 28.01.2026 ] — INTERVISTA</span>
+                <h3 style="font-size: 2rem; font-weight: 300; font-style: italic; margin: 0;" data-i18n="archive_item2_title">estetica della polvere</h3>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;" data-i18n="archive_item2_desc">Dialogo con l'artista X su ciò che resta quando il movimento si ferma.</p>
+            </a>
+            
+            <!-- Aggiungi altri articoli qui -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

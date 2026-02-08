@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIAGNOSI | SUTURA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="custom-cursor"></div>
+
+    <!-- LOGO HEADER (HOME) -->
+    <a href="index.html" class="header-logo">
+        <img src="assets/logo.png" alt="Home">
+    </a>
+
+    <nav>
+        <a href="chisiamo.html" class="nav-wrapper top-left"><span class="nav-label">I</span><span class="nav-hover-text" data-i18n="nav_manifesto">manifesto</span></a>
+        <a href="archivio.html" class="nav-wrapper top-right"><span class="nav-label">II</span><span class="nav-hover-text" data-i18n="nav_archivio">archivio</span></a>
+        <a href="diagnosi.html" class="nav-wrapper bottom-left"><span class="nav-label">III</span><span class="nav-hover-text" data-i18n="nav_diagnosi">diagnosi</span></a>
+        <a href="sfoglia.html" class="nav-wrapper bottom-right"><span class="nav-label">IV</span><span class="nav-hover-text" data-i18n="nav_sfoglia">sfoglia</span></a>
+    </nav>
+
+    <main class="container">
+        <h2 class="page-title"><span data-i18n="diag_title">III. diagnosi</span> <span class="page-subtitle" data-i18n="diag_sub">( submission + contatti )</span></h2>
+        
+        <div class="diagnosis-wrapper">
+            <!-- COLONNA SINISTRA: IL TEMA -->
+            <div class="diagnosis-col">
+                <h3 data-i18n="diag_current">TRIMESTRE IN CORSO</h3>
+                <h1 style="font-size: 3rem; font-style: italic; margin-bottom: 10px;" data-i18n="diag_vol_title">( inerzia )</h1>
+                <p class="clinical-data" style="margin-bottom: 20px; opacity: 0.6;" data-i18n="diag_code">[ CODICE: VOL-01 ]</p>
+                <div style="font-size: 1rem; line-height: 1.6; opacity: 0.8; margin-bottom: 20px;" data-i18n="diag_text_block">
+                    <p>La materia non dimentica il peso che ha sostenuto.</p>
+                    <p>Esiste una memoria della forma che sopravvive alla scomparsa dell’oggetto.</p>
+                    <p>Un’impronta nell’erba schiacciata,</p>
+                    <p>il contorno di una polvere che ha risparmiato il vuoto,</p>
+                    <p>la tensione di una superficie che ancora attende il ritorno del movimento.</p>
+                    <br>
+                    <p>È in questo scarto, tra ciò che è stato e ciò che non è più, che si apre la sutura.</p>
+                    <p>Il volume 01 raccoglie queste evidenze dell'immobilità.</p>
+                    <p>Frammenti di una realtà che oppone resistenza alla cancellazione.</p>
+                    <br>
+                    <p style="font-style: italic;">L'anatomia del resto non è un processo che si compie da soli.</p>
+                </div>
+                <p class="clinical-data" style="opacity: 0.5;" data-i18n="diag_deadline">DEADLINE: 21 MARZO 2026</p>
+            </div>
+
+            <!-- COLONNA DESTRA: PROTOCOLLO -->
+            <div class="diagnosis-col">
+                <h3 data-i18n="diag_protocol">PROTOCOLLO DI INVIO</h3>
+                <ul style="list-style: none; font-size: 0.9rem; line-height: 2; opacity: 0.8; margin-bottom: 30px;">
+                    <li data-i18n="diag_list_1">— Inviare immagini in formato JPG</li>
+                    <li data-i18n="diag_list_2">— Lato lungo 2500px (72dpi)</li>
+                    <li data-i18n="diag_list_3">— Nominare i file: Cognome_Nome_01.jpg</li>
+                    <li data-i18n="diag_list_4">— Se > 15MB usare WeTransfer</li>
+                    <li data-i18n="diag_list_5">— Includere breve bio e statement del progetto</li>
+                    <li data-i18n="diag_list_6">— Oggetto mail: SUBMISSION_INERZIA_NOMECOGNOME</li>
+                </ul>
+
+                <a href="mailto:sutura.magazine@gmail.com?subject=SUBMISSION_INERZIA" class="submit-btn" data-i18n="diag_btn">INVIA CAMPIONE</a>
+                
+                <div style="margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                    <p class="clinical-data" style="opacity: 0.5; margin-bottom: 10px;" data-i18n="diag_contacts_title">CONTATTI GENERALI</p>
+                    <a href="mailto:sutura.magazine@gmail.com" style="text-decoration: none; color: #e0e0e0; display: block; margin-bottom: 5px;">sutura.magazine@gmail.com</a>
+                    <a href="https://instagram.com/sutura_magazine" target="_blank" style="text-decoration: none; color: #e0e0e0; font-style: italic;">@sutura_magazine</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
